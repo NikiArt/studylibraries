@@ -15,11 +15,15 @@ class MainPresenter(val model: Model) : MvpPresenter<MainView>() {
         return model.getAt(index)
     }
 
-    fun counterClick(id: Int) {
-        when (id) {
-            R.id.activity_main_button_one -> viewState.setButtonText(0, calcValue(0))
-            R.id.activity_main_button_two -> viewState.setButtonText(1, calcValue(1))
-            R.id.activity_main_button_three -> viewState.setButtonText(2, calcValue(2))
-        }
+    fun counterClickButtonOne() {
+        viewState.setButtonOneText(calcValue(0))
+    }
+
+    fun counterClickButtonTwo() {
+        viewState.setButtonTwoText(calcValue(1))
+    }
+
+    fun counterClickButtonThree() {
+        viewState.setButtonThreeText(calcValue(2))
     }
 }

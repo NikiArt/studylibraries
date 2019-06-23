@@ -1,4 +1,4 @@
-package ru.nikitaboiko.studylibraries
+package ru.nikitaboiko.studylibraries.task01
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter

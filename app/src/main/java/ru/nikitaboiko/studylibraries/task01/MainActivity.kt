@@ -1,4 +1,4 @@
-package ru.nikitaboiko.studylibraries
+package ru.nikitaboiko.studylibraries.task01
 
 import android.os.Bundle
 import android.widget.Button
@@ -6,6 +6,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.nikitaboiko.studylibraries.R
 
 class MainActivity : MvpAppCompatActivity(), MainView {
     lateinit var buttonOne: Button

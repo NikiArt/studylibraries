@@ -1,4 +1,4 @@
-package ru.nikitaboiko.studylibraries
+package ru.nikitaboiko.studylibraries.task01
 
 class Model {
 

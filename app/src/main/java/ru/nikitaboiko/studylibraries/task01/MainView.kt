@@ -1,4 +1,4 @@
-package ru.nikitaboiko.studylibraries
+package ru.nikitaboiko.studylibraries.task01
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy

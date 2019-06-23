@@ -14,4 +14,16 @@ class MainPresenter(val model: Model) : MvpPresenter<MainView>() {
         model.setAt(index, model.getAt(index) + 1)
         return model.getAt(index)
     }
+
+    fun counterClickButtonOne() {
+        viewState.setButtonOneText(calcValue(0))
+    }
+
+    fun counterClickButtonTwo() {
+        viewState.setButtonTwoText(calcValue(1))
+    }
+
+    fun counterClickButtonThree() {
+        viewState.setButtonThreeText(calcValue(2))
+    }
 }

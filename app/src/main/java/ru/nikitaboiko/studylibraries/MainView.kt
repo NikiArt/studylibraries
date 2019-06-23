@@ -6,5 +6,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
 interface MainView : MvpView {
-    fun setButtonText(btnIndex: Int, value: Int)
+    fun setButtonOneText(value: Int)
+
+    fun setButtonTwoText(value: Int)
+
+    fun setButtonThreeText(value: Int)
 }

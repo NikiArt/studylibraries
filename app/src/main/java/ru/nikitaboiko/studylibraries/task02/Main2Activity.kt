@@ -2,16 +2,25 @@ package ru.nikitaboiko.studylibraries.task02
 
 import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.jakewharton.rxbinding3.widget.textChanges
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main2.*
 import ru.nikitaboiko.studylibraries.App
 import ru.nikitaboiko.studylibraries.R
+import ru.nikitaboiko.studylibraries.task01.MainPresenter
+import ru.nikitaboiko.studylibraries.task01.Model
 
-class Main2Activity : AppCompatActivity() {
+class Main2Activity : MvpAppCompatActivity(), MyView {
     lateinit var textLabel: TextView
+    @InjectPresenter
+    internal lateinit var presenter: MainPresenter
+
+    @ProvidePresenter
+    fun providePresenter(): MainPresenter {
+        return MainPresenter(Model())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +37,12 @@ class Main2Activity : AppCompatActivity() {
             textLabel.text = it.toString()
         }
 
-        App.instance().publishSubject.subscribe(setLabelText())
+        App.instance().publishSubject.subscribe(presenter.setLabelText())
     }
 
-    fun setLabelText(): Observer<Int> {
-        return object : Observer<Int> {
-            override fun onComplete() {
-            }
-
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onError(e: Throwable) {
-            }
-
-            override fun onNext(value: Int) {
-                textLabel.text = value.toString()
-            }
-        }
+    fun setTextLabel(text: String) {
+        textLabel.text = text
     }
+
+
 }

@@ -24,7 +24,7 @@ class MyPresenter(val model: MyModel) : MvpPresenter<MyView>() {
             }
 
             override fun onNext(value: Int) {
-                viewState.setTextLabel()
+                //viewState.setTextLabel()
             }
         }
     }

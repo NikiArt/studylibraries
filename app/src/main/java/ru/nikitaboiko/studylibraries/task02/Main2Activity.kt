@@ -15,7 +15,7 @@ import ru.nikitaboiko.studylibraries.task01.Model
 class Main2Activity : MvpAppCompatActivity(), MyView {
     lateinit var textLabel: TextView
     @InjectPresenter
-    internal lateinit var presenter: MainPresenter
+    internal lateinit var presenter: MyPresenter
 
     @ProvidePresenter
     fun providePresenter(): MainPresenter {
@@ -37,10 +37,10 @@ class Main2Activity : MvpAppCompatActivity(), MyView {
             textLabel.text = it.toString()
         }
 
-        App.instance().publishSubject.subscribe(presenter.setLabelText())
+        //App.instance().publishSubject.subscribe(presenter.setLabelText())
     }
 
-    fun setTextLabel(text: String) {
+    override fun setTextLabel(text: String) {
         textLabel.text = text
     }
 

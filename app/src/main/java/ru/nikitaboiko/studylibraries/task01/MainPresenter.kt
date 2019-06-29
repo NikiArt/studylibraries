@@ -3,10 +3,8 @@ package ru.nikitaboiko.studylibraries.task01
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 @InjectViewState
 class MainPresenter(val model: Model) : MvpPresenter<MainView>() {
@@ -15,56 +13,46 @@ class MainPresenter(val model: Model) : MvpPresenter<MainView>() {
         super.onFirstViewAttach()
     }
 
-    fun calcValue(index: Int): Observable<Int> {
+    /*fun calcValue(index: Int): Observable<Int> {
+        model.setAt()
+
+
         return Observable.create {
             ObservableOnSubscribe<Int> { emitter ->
                 model.setAt(index, model.getAt(index) + 1)
                 emitter.onNext(model.getAt(index))
             }
         }
-    }
+    }*/
 
     fun counterClickButtonOne() {
-        val observer = object : Observer<Int> {
-            override fun onComplete() {
+        val usage = model.getAt(0)
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                model.setAt(0, it + 1).subscribeOn(Schedulers.computation()).subscribe()
+                viewState.setButtonOneText(it)
             }
-
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onNext(t: Int) {
-            }
-
-            override fun onError(e: Throwable) {
-            }
-
-        }
-
-        // viewState.setButtonOneText(calcValue(0))
     }
 
     fun counterClickButtonTwo() {
-        // viewState.setButtonTwoText(calcValue(1))
+        val usage = model.getAt(1)
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                model.setAt(1, it + 1).subscribeOn(Schedulers.computation()).subscribe()
+                viewState.setButtonTwoText(it)
+            }
     }
 
     fun counterClickButtonThree() {
-        //viewState.setButtonThreeText(calcValue(2))
+        val usage = model.getAt(2)
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                model.setAt(2, it + 1).subscribeOn(Schedulers.computation()).subscribe()
+                viewState.setButtonThreeText(it)
+            }
     }
 
-    fun setLabelText(): Observer<Int> {
-        return object : Observer<Int> {
-            override fun onComplete() {
-            }
-
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onError(e: Throwable) {
-            }
-
-            override fun onNext(value: Int) {
-                viewState.
-            }
-        }
-    }
 }

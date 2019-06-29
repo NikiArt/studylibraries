@@ -1,4 +1,4 @@
-package ru.nikitaboiko.studylibraries.task01
+package ru.nikitaboiko.studylibraries
 
 import io.reactivex.Completable
 import io.reactivex.Observable

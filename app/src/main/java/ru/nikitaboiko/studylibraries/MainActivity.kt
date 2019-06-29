@@ -1,12 +1,12 @@
-package ru.nikitaboiko.studylibraries.task01
+package ru.nikitaboiko.studylibraries
 
 import android.os.Bundle
 import android.widget.Button
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.jakewharton.rxbinding3.widget.textChanges
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.nikitaboiko.studylibraries.R
 
 class MainActivity : MvpAppCompatActivity(), MainView {
     lateinit var buttonOne: Button
@@ -39,6 +39,12 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
         buttonThree.setOnClickListener {
             presenter.counterClickButtonThree()
+        }
+
+        val textLabel = activity_main_text
+        val editText = activity_main_edit
+        editText.textChanges().subscribe {
+            textLabel.text = it.toString()
         }
     }
 

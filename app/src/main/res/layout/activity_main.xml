@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".task01.MainActivity">
+        tools:context=".MainActivity">
 
     <TextView
             android:text="@string/label_one"
@@ -50,4 +50,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.498"/>
+
+    <TextView
+            android:layout_marginTop="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/activity_main_text"
+            app:layout_constraintEnd_toEndOf="@+id/activity_main_button_three"
+            app:layout_constraintStart_toStartOf="@+id/activity_main_button_three"
+            app:layout_constraintTop_toBottomOf="@+id/activity_main_button_three"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/enter_your_text_here"
+            android:ems="10"
+            android:id="@+id/activity_main_edit"
+            app:layout_constraintEnd_toEndOf="@+id/activity_main_text"
+            app:layout_constraintStart_toStartOf="@+id/activity_main_text"
+            app:layout_constraintTop_toBottomOf="@+id/activity_main_text"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,6 +54,10 @@ class MainPresenter(val model: Model) : MvpPresenter<MainView>() {
         eventBus.onNext("c")
         eventBus.onNext("d")
         eventBus.onComplete()
+
+        val myEvent = MyEventBus()
+        myEvent.observable().subscribe { event -> Log.d("DDLog", "event $event") }
+        myEvent.post("a")
     }
 
     /*fun calcValue(index: Int): Observable<Int> {

@@ -5,6 +5,7 @@ import android.widget.Button
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.jakewharton.rxbinding3.widget.textChanges
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : MvpAppCompatActivity(), MainView {
@@ -38,6 +39,12 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
         buttonThree.setOnClickListener {
             presenter.counterClickButtonThree()
+        }
+
+        val textLabel = activity_main_text
+        val editText = activity_main_edit
+        editText.textChanges().subscribe {
+            textLabel.text = it.toString()
         }
     }
 
